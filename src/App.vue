@@ -1,11 +1,26 @@
-<script setup></script>
+<script setup>
+import { useQuizStore } from './stores/Quiz'
+
+const quiz = useQuizStore()
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <header>
+    <nav class="nav">
+      <router-link to="/">Home</router-link>
+      <router-link to="/quiz">Quiz</router-link>
+    </nav>
+    <span>Score: {{ quiz.score }}</span>
+  </header>
+
+  <main>
+    <router-view />
+  </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.nav {
+  display: flex;
+  gap: 12px;
+}
+</style>

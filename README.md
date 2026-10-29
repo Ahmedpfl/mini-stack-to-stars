@@ -1,38 +1,40 @@
-# .
+# Mini-quiz
 
-This template should help get you started developing with Vue 3 in Vite.
+Een kleine quiz met 3 vragen, gemaakt met Vue 3, Vue Router en Pinia. Oefenproject 3 voor het keuzedeel Verdieping software, als oefening voor het prototype Stack to the Stars.
 
-## Recommended IDE Setup
+## Wat kan het
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Startpagina met een startknop.
+- Quizpagina met 3 meerkeuzevragen, één per keer.
+- De score staat bovenaan en telt mee bij elk goed antwoord.
+- Na de laatste vraag zie je je eindscore en kun je opnieuw beginnen.
+- Ga je direct naar `/quiz` zonder op Start te drukken, dan word je teruggestuurd naar de startpagina.
 
-## Recommended Browser Setup
+## Wat ik hiermee geoefend heb
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+| Onderdeel | Waar |
+|---|---|
+| Vue Router | 2 routes (`/` en `/quiz`), `router-link`, `router-view` en `router.push` |
+| Navigation guard | `beforeEach` stuurt je terug als de quiz niet gestart is |
+| Pinia | Store met `started` en `score`, en de actions `start` en `addPoint` |
+| `props` | De vraag gaat van QuizView naar QuestionCard |
+| `emit` | QuestionCard stuurt het gekozen antwoord terug naar QuizView |
+| `computed` | De huidige vraag |
+| `v-if` / `v-else` | Vraag tonen of het eindscherm |
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
+## Starten
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+Open daarna het adres uit de terminal (meestal http://localhost:5173).
 
-```sh
-npm run build
-```
+## Bestanden
+
+- `src/router/index.js`: de routes en de guard.
+- `src/stores/Quiz.js`: de Pinia store met de score.
+- `src/views/HomeView.vue`: de startpagina.
+- `src/views/QuizView.vue`: de vragen en het eindscherm.
+- `src/components/QuestionCard.vue`: één vraag met de antwoordknoppen.
